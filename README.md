@@ -47,7 +47,7 @@ The rect of the background also gives the size of the box.  If you don't need a 
 
 The process shouldn't be too resource intensive, since every letter is blitted onto a surface that's kept in the class.  Line breaks as well as scrolling are implemented.
 
-Run and look into eleprinter-demo for an example.
+Run and look into teletype-demo for an example.
 
 ## How it's done
 
