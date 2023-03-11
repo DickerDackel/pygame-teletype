@@ -73,9 +73,30 @@ The delta_time that's usually calculated at the beginning of a pygame main loop 
 See Teletype code for how it is used.
 
 
+## How it's done
+
+The class works on 3 surfaces.  
+
+1st backdrop.  You hand the main surface, e.g. a paper texture, with proper
+dimensions to the constructor.
+
+The class itself has a main surface the same size as the backdrop.
+
+Additionally, there's the text canvas.  This is filled letter by letter after each cooldown delay.
+
+Then first the backdrop is blitted onto the main surface, followed by the text canvas.
+
+## TODO
+
+Proper word wrapping and text justification would be nice.  Right now, words
+simply break in the middle, when the border is reached.  But this requires a
+form of lookahead and this was implemented in about 2 hours, with 2 more for
+documentation and making a github project.
+
+
 ## Licensing stuff
+
+This lib is under the MIT license.
 
 Beep sound, used in demo from https://opengameart.org/content/beep-tone-sound-sfx
 It's CC0, but still
-
-This lib is under the MIT license.
