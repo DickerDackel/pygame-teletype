@@ -1,3 +1,5 @@
+import sys
+import os.path
 import pygame
 
 from teleprinter import Teleprinter, Cooldown
@@ -24,7 +26,12 @@ def main():
     screen = pygame.display.set_mode(SIZE)
     clock = pygame.time.Clock()
 
-    sound = pygame.mixer.Sound('beep.wav')
+    for f in ['beep.wav', os.path.join(sys.prefix, 'beep.wav')]:
+        if os.path.isfile(f):
+            sound = pygame.mixer.Sound(f)
+            break
+    else:
+        sound = None
 
     textbox = pygame.Surface((384, 256))
     textbox.fill(pygame.Color('peachpuff3'))
