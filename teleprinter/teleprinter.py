@@ -138,6 +138,7 @@ class Teleprinter:
                 eol()
                 wrapped = True
 
+            # Don't print a space at the beginning of a line after a wrap.
             if not (wrapped and char == ' '):
                 self.textbox.blit(cell, self.cursor)
                 self.cursor[0] += r.width
