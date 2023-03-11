@@ -14,6 +14,7 @@ setup(
     entry_points={
         'console_scripts': [
             'teletype-demo = teletype.demo:main',
+            'teletype-multidemo = teletype.multidemo:main',
         ],
     },
 )
