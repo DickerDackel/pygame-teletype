@@ -8,12 +8,6 @@ setup(
     install_requires=[
         'pygame-ce',
     ],
-    package_data={
-        'beep': ['beep.wav'],
-    },
-    data_files=[
-        'beep.wav'
-    ],
     entry_points={
         'console_scripts': [
             'teletype-demo = teletype.demo:main',

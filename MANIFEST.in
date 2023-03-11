@@ -1,2 +1,2 @@
 global-exclude *.pyc
-include beep.wav
+include teletype/data/beep.wav

@@ -1,5 +1,6 @@
 import sys
 import os.path
+import importlib.resources
 import pygame
 
 from teletype import Teletype, Cooldown
@@ -24,12 +25,8 @@ def main():
     screen = pygame.display.set_mode(SIZE)
     clock = pygame.time.Clock()
 
-    for f in ['beep.wav', os.path.join(sys.prefix, 'beep.wav')]:
-        if os.path.isfile(f):
-            sound = pygame.mixer.Sound(f)
-            break
-    else:
-        sound = None
+    beep = importlib.resources.files('teletype.data').joinpath('beep.wav')
+    sound = pygame.mixer.Sound(beep) if os.path.isfile(beep) else None
 
     textbox = pygame.Surface((384, 256))
     textbox.fill(pygame.Color('peachpuff3'))
