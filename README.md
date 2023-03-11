@@ -1,16 +1,18 @@
 # pygame-teleprinter
 
+A textbox with a teleprinter text effect as in old adventure games.
+
+![Screen recording of demo](https://github.com/DickerDackel/pygame-teleprinter/blob/main/demo.gif)
+
 ## Installation
 
-    # Never do this without a virtual env!
+**Never do this without a virtual env!**
 
     pip install git+https://github.com/dickerdackel/pygame-teleprinter
 
 ## Usage
 
-A textbox with a teleprinter text effect as in old adventure games
-
-![Screen recording of demo](https://github.com/DickerDackel/pygame-teleprinter/blob/main/demo.gif)
+### Teleprinter()
 
     tt = Teleprinter(pos=screen.get_rect().center,
 		     text='Lorem ipsum dolor',
@@ -27,23 +29,22 @@ A textbox with a teleprinter text effect as in old adventure games
 
 Parameters:
 
-        pos: Vector2 - *center* position of the text box
-        backdrop: pygame.Surface - background to draw the text on.
-        text: the text to teleprint
-        margin: int - margin around the text within the text box
-        ticket_speed: float - delay in seconds between letters
-        backdrop: pygame.Surface - optional.  e.g. a paper texture
-        font: pygame.font.SysFont - Falls back to couriernew, 16pt
-        font_color: pygame.Color - defaults to white
+	pos: Vector2 - *center* position of the text box
+	backdrop: pygame.Surface - background to draw the text on.
+	text: the text to teleprint
+	margin: int - margin around the text within the text box
+	ticket_speed: float - delay in seconds between letters
+	backdrop: pygame.Surface - optional.  e.g. a paper texture
+	font: pygame.font.SysFont - Falls back to couriernew, 16pt
+	font_color: pygame.Color - defaults to white
 
-    The rect of the background also gives the size of the box.  If you don't
-    need a background, just pass a transparent surface.
+The rect of the background also gives the size of the box.  If you don't need a background, just pass a transparent surface.
 
-    The process shouldn't be too resource intensive, since every letter is
-    blitted onto a surface that's kept in the class.  Line breaks as well as
-    scrolling are implemented.
+The process shouldn't be too resource intensive, since every letter is blitted onto a surface that's kept in the class.  Line breaks as well as scrolling are implemented.
 
-    Run and look into eleprinter-demo for an example.
+Run and look into eleprinter-demo for an example.
+
+### Cooldown()
 
 Additionally, a short but usefull class for cooldown events has been added.
 
@@ -63,14 +64,14 @@ Parameters:
 
 	temp: float - "temperature" in seconds to cool down from 
 
-    The delta_time that's usually calculated at the beginning of a pygame main
-    loop will be used as a factor while counting down.
+The delta_time that's usually calculated at the beginning of a pygame main loop will be used as a factor while counting down.
 
-    See Teleprinter code for how it is used.
+See Teleprinter code for how it is used.
 
 
 ## Licensing stuff
 
-    Beep sound, used in demo from https://opengameart.org/content/beep-tone-sound-sfx
-    It's CC0, but still
+Beep sound, used in demo from https://opengameart.org/content/beep-tone-sound-sfx
+It's CC0, but still
 
+This lib is under the MIT license.
