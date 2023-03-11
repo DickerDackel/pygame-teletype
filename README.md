@@ -3,7 +3,6 @@
 ## Usage
 A textbox with a teleprinter text effect as in old adventure games
 
-![alt text for screen reaScreen recording of demoders](/path/to/image.png "Text to show on mouseover").
 ![Screen recording of demo](https://github.com/DickerDackel/pygame-teleprinter/blob/main/demo.gif)
 
     tt = Teleprinter(pos=screen.get_rect().center,
