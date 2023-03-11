@@ -1,6 +1,13 @@
 # pygame-teleprinter
 
+## Installation
+
+    # Never do this without a virtual env!
+
+    pip install git+https://github.com/dickerdackel/pygame-teleprinter
+
 ## Usage
+
 A textbox with a teleprinter text effect as in old adventure games
 
 ![Screen recording of demo](https://github.com/DickerDackel/pygame-teleprinter/blob/main/demo.gif)
