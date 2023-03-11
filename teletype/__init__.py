@@ -1,1 +1,1 @@
-from .teletype import Teletype, Cooldown
+from .teletype import Teletype

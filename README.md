@@ -48,34 +48,9 @@ The process shouldn't be too resource intensive, since every letter is blitted o
 
 Run and look into eleprinter-demo for an example.
 
-### Cooldown()
-
-Additionally, a short but usefull class for cooldown events has been added.
-
-    clock = pygame.time.Clock()
-    delay = Cooldown(5)
-
-    ...
-
-    dt = clock.get_time() / 1000.0
-    delay(delta_time)
-    if delay.cold:
-	# do stuff
-	# Reset the timer to wait again
-	delay.reset()
-
-Parameters:
-
-	temp: float - "temperature" in seconds to cool down from 
-
-The delta_time that's usually calculated at the beginning of a pygame main loop will be used as a factor while counting down.
-
-See Teletype code for how it is used.
-
-
 ## How it's done
 
-The class works on 3 surfaces.  
+The class works on 3 surfaces.
 
 1st backdrop.  You hand the main surface, e.g. a paper texture, with proper
 dimensions to the constructor.

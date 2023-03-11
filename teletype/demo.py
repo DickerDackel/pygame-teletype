@@ -3,7 +3,8 @@ import os.path
 import importlib.resources
 import pygame
 
-from teletype import Teletype, Cooldown
+from teletype import Teletype
+from cooldown import Cooldown
 
 
 FPS = 60
@@ -56,9 +57,9 @@ def main():
                 if e.key == pygame.K_ESCAPE:
                     running = False
                 elif e.key == pygame.K_UP:
-                    tt.cooldown._temp *= 0.66
+                    tt.cooldown.init *= 0.66
                 elif e.key == pygame.K_DOWN:
-                    tt.cooldown._temp *= 1.333
+                    tt.cooldown.init *= 1.333
                 elif e.key == pygame.K_SPACE:
                     tt.random_delay = 0.05 - tt.random_delay
                 elif e.key == pygame.K_PERIOD:

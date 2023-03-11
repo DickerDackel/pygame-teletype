@@ -1,45 +1,7 @@
 import pygame
 import random
 
-class Cooldown:
-    """A cooldown class, counting down to zero, optionally repeating.
-
-        temp: float - "temperature" to cool down from
-    """
-
-    def __init__(self, temp=1):
-        self.temp = self._temp = temp
-
-    def __call__(self, dt):
-        """cooldown(dt) -> float
-
-        reduces and returns the cooldown
-        """
-        self.temp -= dt
-        if self.temp < 0:
-            self.temp = 0
-
-    def reset(self):
-        """cooldown.reset()
-
-        reset the cooldown to its initial temperature to use it again
-        """
-        self.temp = self._temp
-
-    @property
-    def cold(self):
-        """if cooldown.cold: ...
-
-        the cooldown is cold, if it is down to zero.  From here, you can either
-        act on it and/or reset.
-        """
-
-        if self.temp == -1:
-            return False
-        elif self.temp == 0:
-            return True
-        else:
-            return False
+from cooldown import Cooldown
 
 
 class Teletype:
@@ -159,10 +121,10 @@ class Teletype:
 
             # Extended delay if a sentence ends
             if self.pause_after_sentence and char in '.!?;':
-                self.cooldown.temp *= Teletype.SENTENCE_PAUSE_FACTOR
+                self.cooldown.temperature *= Teletype.SENTENCE_PAUSE_FACTOR
 
             elif self.random_delay and random.random() < self.random_delay:
-                self.cooldown.temp *= Teletype.RANDOM_PAUSE_FACTOR
+                self.cooldown.temperature *= Teletype.RANDOM_PAUSE_FACTOR
 
         return True
 
