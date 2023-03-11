@@ -59,9 +59,9 @@ def main():
                 if e.key == pygame.K_ESCAPE:
                     running = False
                 elif e.key == pygame.K_UP:
-                    tt.cooldown._temp *= 1.333
-                elif e.key == pygame.K_DOWN:
                     tt.cooldown._temp *= 0.66
+                elif e.key == pygame.K_DOWN:
+                    tt.cooldown._temp *= 1.333
                 elif e.key == pygame.K_SPACE:
                     tt.random_delay = 0.05 - tt.random_delay
                 elif e.key == pygame.K_PERIOD:

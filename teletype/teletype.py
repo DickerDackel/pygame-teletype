@@ -68,6 +68,10 @@ class Teletype:
     Run and look into eleprinter-demo for an example.
 
     """
+
+    RANDOM_PAUSE_FACTOR = 5
+    SENTENCE_PAUSE_FACTOR = 10
+
     def __init__(self, pos, text, margin=10, ticker_speed=0.1,
                  backdrop=None, font=None, font_color=None, sound=None,
                  random_delay=0, pause_after_sentence=True):
@@ -155,10 +159,10 @@ class Teletype:
 
             # Extended delay if a sentence ends
             if self.pause_after_sentence and char in '.!?;':
-                self.cooldown.temp *= 10
+                self.cooldown.temp *= Teletype.SENTENCE_PAUSE_FACTOR
 
             elif self.random_delay and random.random() < self.random_delay:
-                self.cooldown.temp *= 5
+                self.cooldown.temp *= Teletype.RANDOM_PAUSE_FACTOR
 
         return True
 
