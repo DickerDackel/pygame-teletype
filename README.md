@@ -1,5 +1,9 @@
 # pygame-teleprinter
 
+A textbox with a teleprinter text effect as in old adventure games.
+
+![Screen recording of demo](https://github.com/DickerDackel/pygame-teleprinter/blob/main/demo.gif)
+
 ## Installation
 
 **Never do this without a virtual env!**
@@ -9,10 +13,6 @@
 ## Usage
 
 ### Teleprinter()
-
-A textbox with a teleprinter text effect as in old adventure games.
-
-![Screen recording of demo](https://github.com/DickerDackel/pygame-teleprinter/blob/main/demo.gif)
 
     tt = Teleprinter(pos=screen.get_rect().center,
 		     text='Lorem ipsum dolor',
