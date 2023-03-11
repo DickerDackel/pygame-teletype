@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='pygame-teleprinter',
+    name='pygame-teletype',
     version='0.1.0',
     packages=find_packages(),
     include_package_data=True,
@@ -16,7 +16,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'teleprinter-demo = teleprinter.demo:main',
+            'teletype-demo = teletype.demo:main',
         ],
     },
 )

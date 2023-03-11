@@ -1,4 +1,5 @@
 import pygame
+import random
 
 class Cooldown:
     """A cooldown class, counting down to zero, optionally repeating.
@@ -41,19 +42,21 @@ class Cooldown:
             return False
 
 
-class Teleprinter:
-    """Simulate a teleprinter effect.  Text flows letter by letter into a box
+class Teletype:
+    """Simulate a teletype effect.  Text flows letter by letter into a box
 
     Parameters:
 
         pos: Vector2 - *center* position of the text box
         backdrop: pygame.Surface - background to draw the text on.
-        text: the text to teleprint
+        text: the text to teletype
         margin: int - margin around the text within the text box
         ticket_speed: float - delay in seconds between letters
         backdrop: pygame.Surface - optional.  e.g. a paper texture
         font: pygame.font.SysFont - Falls back to couriernew, 16pt
         font_color: pygame.Color - defaults to white
+        random_delay: float = 0: randomly add pauses, faking transmission delays
+        pause_after_sentence: bool = True - Make a longer pause after ./!/?/;
 
     The rect of the background also gives the size of the box.  If you don't
     need a background, just pass a transparent surface.
@@ -66,7 +69,9 @@ class Teleprinter:
 
     """
     def __init__(self, pos, text, margin=10, ticker_speed=0.1,
-                 backdrop=None, font=None, font_color=None, sound=None):
+                 backdrop=None, font=None, font_color=None, sound=None,
+                 random_delay=0, pause_after_sentence=True):
+        # Yes, I know, this all should be a dataclass...
         self.surface = pygame.Surface(backdrop.get_size(), pygame.SRCALPHA)
         self.backdrop = backdrop
         self.pos = self.surface.get_rect()
@@ -78,6 +83,8 @@ class Teleprinter:
         self.line_height = self.font.get_linesize()
         self.cooldown = Cooldown(ticker_speed)
         self.sound = sound
+        self.random_delay = random_delay
+        self.pause_after_sentence = pause_after_sentence
 
         w, h = self.backdrop.get_size()
         w -= 2 * margin
@@ -147,8 +154,11 @@ class Teleprinter:
                     self.sound.play()
 
             # Extended delay if a sentence ends
-            if char in '.!?;':
-                self.cooldown.temp = 1.5
+            if self.pause_after_sentence and char in '.!?;':
+                self.cooldown.temp *= 10
+
+            elif self.random_delay and random.random() < self.random_delay:
+                self.cooldown.temp *= 5
 
         return True
 

@@ -3,12 +3,12 @@ requires = ['setuptools']
 build-backend = 'setuptools.build_meta'
 
 [project]
-name = 'pygame-teleprinter'
+name = 'pygame-teletype'
 version = '0.0.1'
 authors = [
     { name="Michael Lamertz", email="michael.lamertz@gmail.com" },
 ]
-description = 'A textbox with a teleprinter text effect as in old adventure games'
+description = 'A textbox with a teletype text effect as in old adventure games'
 readme = 'README.md'
 classifiers = [
     'License :: OSI Approved :: MIT No Attribution License (MIT-0)',
@@ -16,8 +16,8 @@ classifiers = [
 ]
 
 [project.urls]
-'Homepage' = 'https://github.com/dickerdackel/pygame-teleprinter'
-'Bug Tracker' = 'https://github.com/DickerDackel/pygame-teleprinter/issues'
+'Homepage' = 'https://github.com/dickerdackel/pygame-teletype'
+'Bug Tracker' = 'https://github.com/DickerDackel/pygame-teletype/issues'
 
 
 #dependencies = [ ]
