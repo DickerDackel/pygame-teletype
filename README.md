@@ -9,6 +9,7 @@ A textbox with a teletype text effect as in old adventure games.
 **Never do this without a virtual env!**
 
     pip install git+https://github.com/dickerdackel/pygame-teletype
+    teletype-demo
 
 ## Usage
 
