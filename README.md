@@ -3,6 +3,8 @@
 ## Usage
 A textbox with a teleprinter text effect as in old adventure games
 
+![Screen recording of demo](https://github.com/dickerdackel/pygame-teleprinter/demo.gif)
+
     tt = Teleprinter(pos=screen.get_rect().center,
 		     text='Lorem ipsum dolor',
 		     margin=10,
