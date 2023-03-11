@@ -40,8 +40,8 @@ Parameters:
 	backdrop: pygame.Surface - optional.  e.g. a paper texture
 	font: pygame.font.SysFont - Falls back to couriernew, 16pt
 	font_color: pygame.Color - defaults to white
-        random_delay: float = 0: randomly add pauses, faking transmission delays
-        pause_after_sentence: bool = True - Make a longer pause after ./!/?/;
+	random_delay: float = 0: randomly add pauses, faking transmission delays
+	pause_after_sentence: bool = True - Make a longer pause after ./!/?/;
 
 The rect of the background also gives the size of the box.  If you don't need a background, just pass a transparent surface.
 
