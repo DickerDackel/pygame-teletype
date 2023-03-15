@@ -1,16 +1,14 @@
-
-import sys
 import os.path
 import importlib.resources
 import json
 import pygame
 
 from teletype import Teletype
-from cooldown import Cooldown
 
 
 FPS = 60
 SIZE = (1024, 768)
+
 
 def create_box(w, h):
     textbox = pygame.Surface((w, h))
@@ -20,6 +18,7 @@ def create_box(w, h):
     pygame.draw.line(textbox, pygame.Color('papayawhip'), (    0, h - 1), (w - 1, h - 1), width=3)
     pygame.draw.line(textbox, pygame.Color('papayawhip'), (w - 1,     0), (w - 1, h - 1), width=3)
     return textbox
+
 
 pygame.init()
 pygame.display.set_caption('Teletype demo')
@@ -70,6 +69,7 @@ def main():
         clock.tick(FPS)
 
     pygame.quit()
+
 
 if __name__ == '__main__':
     main()

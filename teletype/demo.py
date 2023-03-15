@@ -4,7 +4,6 @@ import importlib.resources
 import pygame
 
 from teletype import Teletype
-from cooldown import Cooldown
 
 
 FPS = 60
