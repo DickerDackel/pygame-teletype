@@ -9,6 +9,7 @@ A textbox with a teletype text effect as in old adventure games.
 **Never do this without a virtual env!**
 
     pip install git+https://github.com/dickerdackel/pygame-teletype
+    teletype-demo
 
 ## Usage
 
@@ -39,14 +40,14 @@ Parameters:
 	backdrop: pygame.Surface - optional.  e.g. a paper texture
 	font: pygame.font.SysFont - Falls back to couriernew, 16pt
 	font_color: pygame.Color - defaults to white
-        random_delay: float = 0: randomly add pauses, faking transmission delays
-        pause_after_sentence: bool = True - Make a longer pause after ./!/?/;
+	random_delay: float = 0: randomly add pauses, faking transmission delays
+	pause_after_sentence: bool = True - Make a longer pause after ./!/?/;
 
 The rect of the background also gives the size of the box.  If you don't need a background, just pass a transparent surface.
 
 The process shouldn't be too resource intensive, since every letter is blitted onto a surface that's kept in the class.  Line breaks as well as scrolling are implemented.
 
-Run and look into eleprinter-demo for an example.
+Run and look into teletype-demo for an example.
 
 ## How it's done
 
