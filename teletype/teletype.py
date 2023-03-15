@@ -76,7 +76,6 @@ class Teletype:
 
         Returns false when the text is exhausted.
         """
-        self.cooldown(dt)
         if not self.cooldown.cold or self.done:
             return False
 
