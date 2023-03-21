@@ -76,3 +76,5 @@ This lib is under the MIT license.
 
 Beep sound, used in demo from https://opengameart.org/content/beep-tone-sound-sfx
 It's CC0, but still
+
+![Screen recording of a multi instance demo](https://github.com/DickerDackel/pygame-teletype/blob/main/multidemo.gif)
