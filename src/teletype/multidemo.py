@@ -11,13 +11,13 @@ SIZE = (1024, 768)
 
 
 def create_box(w, h):
-    textbox = pygame.Surface((w, h))
-    textbox.fill(pygame.Color('peachpuff3'))
-    pygame.draw.line(textbox, pygame.Color('peachpuff4'), (    0,     0), (w - 1,     0), width=3)
-    pygame.draw.line(textbox, pygame.Color('peachpuff4'), (    0,     0), (    0, h - 1), width=3)
-    pygame.draw.line(textbox, pygame.Color('papayawhip'), (    0, h - 1), (w - 1, h - 1), width=3)
-    pygame.draw.line(textbox, pygame.Color('papayawhip'), (w - 1,     0), (w - 1, h - 1), width=3)
-    return textbox
+    canvas = pygame.Surface((w, h))
+    canvas.fill(pygame.Color('peachpuff3'))
+    pygame.draw.line(canvas, pygame.Color('peachpuff4'), (    0,     0), (w - 1,     0), width=3)
+    pygame.draw.line(canvas, pygame.Color('peachpuff4'), (    0,     0), (    0, h - 1), width=3)
+    pygame.draw.line(canvas, pygame.Color('papayawhip'), (    0, h - 1), (w - 1, h - 1), width=3)
+    pygame.draw.line(canvas, pygame.Color('papayawhip'), (w - 1,     0), (w - 1, h - 1), width=3)
+    return canvas
 
 
 pygame.init()
@@ -34,10 +34,10 @@ with open(importlib.resources.files('teletype.data').joinpath('multidemo.json'))
 tt_list = []
 for location, box_desc in boxes.items():
     tb = create_box(*box_desc['size'])
-    tbr = tb.get_rect()
+    tbr = tb.get_rect(center=box_desc['pos'])
 
-    tt_list.append(Teletype(pos=box_desc['pos'],
-                            text=box_desc['text'],
+    tt_list.append(Teletype(text=box_desc['text'],
+                            rect=tbr,
                             margin=10,
                             ticker_speed=box_desc['tickerspeed'],
                             backdrop=tb,
@@ -45,6 +45,9 @@ for location, box_desc in boxes.items():
                             font_color=pygame.Color('black'),
                             sound=sound,
                             random_delay=0.05))
+
+sprite_group = pygame.sprite.Group()
+sprite_group.add(tt_list)
 
 
 def main():
@@ -61,9 +64,8 @@ def main():
 
         screen.fill(pygame.Color('aquamarine4'))
 
-        for tt in tt_list:
-            tt.update(dt)
-            tt.draw(screen)
+        sprite_group.update(dt)
+        sprite_group.draw(screen)
 
         pygame.display.update()
         clock.tick(FPS)

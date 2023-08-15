@@ -5,9 +5,10 @@ import pygame
 
 from teletype import Teletype
 
-
+TITLE = 'Teletype demo'
+SCREEN = pygame.Rect(0, 0, 1024, 768)
 FPS = 60
-SIZE = (1024, 768)
+DT_MAX = 3 / FPS
 
 LIPSUM = """Press ESC any time to end the demo, but keep watching until scrolling starts.
 
@@ -21,29 +22,29 @@ Did I mention you can press ESC any time to end the demo?
 
 def main():
     pygame.init()
-    pygame.display.set_caption('Teletype demo')
-    screen = pygame.display.set_mode(SIZE)
+    pygame.display.set_caption(TITLE)
+    screen = pygame.display.set_mode(SCREEN.size)
     clock = pygame.time.Clock()
 
     beep = importlib.resources.files('teletype.data').joinpath('beep.wav')
     sound = pygame.mixer.Sound(beep) if os.path.isfile(beep) else None
 
-    textbox = pygame.Surface((384, 256))
-    textbox.fill(pygame.Color('peachpuff3'))
-    pygame.draw.line(textbox, pygame.Color('peachpuff4'), (  0,   0), (383,   0), width=3)
-    pygame.draw.line(textbox, pygame.Color('peachpuff4'), (  0,   0), (  0, 255), width=3)
-    pygame.draw.line(textbox, pygame.Color('papayawhip'), (  0, 255), (383, 255), width=3)
-    pygame.draw.line(textbox, pygame.Color('papayawhip'), (383,   0), (383, 255), width=3)
-    textbox_rect = textbox.get_rect()
+    canvas = pygame.Surface((384, 256))
+    canvas.fill(pygame.Color('peachpuff3'))
+    pygame.draw.line(canvas, pygame.Color('peachpuff4'), (  0,   0), (383,   0), width=3)
+    pygame.draw.line(canvas, pygame.Color('peachpuff4'), (  0,   0), (  0, 255), width=3)
+    pygame.draw.line(canvas, pygame.Color('papayawhip'), (  0, 255), (383, 255), width=3)
+    pygame.draw.line(canvas, pygame.Color('papayawhip'), (383,   0), (383, 255), width=3)
 
-    tt = Teletype(pos=screen.get_rect().center,
-                  text=LIPSUM,
+    tt = Teletype(text=LIPSUM,
+                  rect=canvas.get_rect(center=SCREEN.center),
                   margin=10,
                   ticker_speed=0.05,
-                  backdrop=textbox,
+                  backdrop=canvas,
                   font=pygame.font.SysFont('couriernew', 16),
                   font_color=pygame.Color('black'),
                   sound=sound)
+    sprite_group = pygame.sprite.Group(tt)
 
     running = True
     while running:
@@ -56,9 +57,9 @@ def main():
                 if e.key == pygame.K_ESCAPE:
                     running = False
                 elif e.key == pygame.K_UP:
-                    tt.cooldown.init *= 0.66
+                    tt.ticker_speed *= 0.66
                 elif e.key == pygame.K_DOWN:
-                    tt.cooldown.init *= 1.333
+                    tt.ticker_speed *= 1.333
                 elif e.key == pygame.K_SPACE:
                     tt.random_delay = 0.05 - tt.random_delay
                 elif e.key == pygame.K_PERIOD:
@@ -66,13 +67,14 @@ def main():
 
         screen.fill(pygame.Color('aquamarine4'))
 
-        tt.update(dt)
-        tt.draw(screen)
+        sprite_group.update(dt)
+        sprite_group.draw(screen)
 
         pygame.display.update()
         clock.tick(FPS)
 
     pygame.quit()
+
 
 if __name__ == '__main__':
     main()
